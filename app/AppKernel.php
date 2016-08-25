@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             //addition of the FOSUserBundle()
             new FOS\UserBundle\FOSUserBundle(),
+            new Librarylib\BooksBundle\LibrarylibBooksBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

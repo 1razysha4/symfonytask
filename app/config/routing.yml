@@ -1,3 +1,11 @@
+librarylib_books_books:
+    resource: "@LibrarylibBooksBundle/Controller/BooksController.php"
+    type:     annotation
+
+librarylib_books:
+    resource: "@LibrarylibBooksBundle/Resources/config/routing.xml"
+    prefix:   /
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
@@ -21,3 +29,9 @@ fos_user_resetting:
 fos_user_change_password:
         resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
         prefix: /profile
+
+
+LibrarylibBooksBundle:
+    resource: "@LibrarylibBooksBundle/Controller/"
+    type: annotation
+    prefix: /

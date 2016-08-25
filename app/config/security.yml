@@ -17,6 +17,8 @@ security:
             pattern: ^/
             form_login:
                 provider: fos_userbundle
+                default_target_path: books_index
+
                 #csrf_token_generator: security.csrf.token_manager
                 # if you are using Symfony < 2.8, use the following config instead:
                 # csrf_provider: form.csrf_provider
