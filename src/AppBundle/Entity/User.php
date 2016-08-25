@@ -15,7 +15,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * User
  *
- * @ORM\Table("fos_user")
+ * @ORM\Table("fos_user1")
  * @ORM\Entity
  */
 class User extends BaseUser
