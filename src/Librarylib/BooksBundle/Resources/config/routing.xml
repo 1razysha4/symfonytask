@@ -7,4 +7,8 @@
     <route id="librarylib_books_homepage" path="/">
         <default key="_controller">LibrarylibBooksBundle:Default:index</default>
     </route>
+
+    <route id="librarylib_books_search" path="/genre/{slug}">
+        <default key="_controller">LibrarylibBooksBundle:Default:genre</default>
+    </route>
 </routes>

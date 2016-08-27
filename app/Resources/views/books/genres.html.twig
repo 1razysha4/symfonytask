@@ -1,17 +1,34 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Genre</h1>
+<h1>Genre</h1>
 
-    <table>
+
+    <table class="table" id="genre-table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Releasedate</th>
+            <th>Length</th>
+            <th>Generes</th>
+            <th>Id</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
         <tbody>
+        {% for book in books %}
             <tr>
-                <th>Name of the book</th>
-
+                <td><a href="{{ path('books_show', { 'id': book.id }) }}">{{ book.name }}</a></td>
+                <td>{% if book.releasedate %}{{ book.releasedate|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ book.length }}</td>
+                <td>{{ book.generes }}</td>
+                <td>{{ book.id }}</td>
+                <td><a href="{{ path('books_show', { 'id': book.id }) }}">Detail</a></td>
             </tr>
+        {% endfor %}
         </tbody>
     </table>
 
-      <a href="{{ path('books_index') }}">Home</a>
+    <a href="{{ path('books_index') }}">Home</a>
 
-{% endblock %}
+    {% endblock %}
