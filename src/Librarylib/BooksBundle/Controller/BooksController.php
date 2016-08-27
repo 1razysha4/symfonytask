@@ -23,15 +23,29 @@ class BooksController extends Controller
      * @Route("/", name="books_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction($page)
     {
-        $em = $this->getDoctrine()->getManager();
+       /* $em = $this->getDoctrine()->getManager();
 
         $books = $em->getRepository('LibrarylibBooksBundle:Books')->findAll();
 
         return $this->render('books/index.html.twig', array(
             'books' => $books,
-        ));
+        ));*/
+
+
+        $limit = 5;
+        $offset = ($page - 1) * $limit;
+        $accountRepo = $this->getDoctrine()->getRepository('LibrarylibBooksBundle:Books');
+        $query = $accountRepo->createQueryBuilder('a')
+            ->setFirstResult($offset)
+            ->setMaxResults($limit)
+            ->getQuery();
+        $paginator = new Paginator($query);
+        dump((int )$paginator->count());
+        $total = (int) ceil($paginator->count() / $limit);
+        dump($total);
+        $accounts = $query->getResult();
     }
 
     /**
@@ -76,6 +90,7 @@ class BooksController extends Controller
         ));
     }
 
+
     /**
      * Displays a form to edit an existing Books entity.
      *
@@ -103,6 +118,7 @@ class BooksController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
+
 
     /**
      * Deletes a Books entity.
@@ -139,4 +155,7 @@ class BooksController extends Controller
             ->getForm()
         ;
     }
+
+
+
 }
