@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Books</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Name</th>
+                <td>{{ book.name }}</td>
+            </tr>
+            <tr>
+                <th>Releasedate</th>
+                <td>{% if book.releasedate %}{{ book.releasedate|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Length</th>
+                <td>{{ book.length }}</td>
+            </tr>
+            <tr>
+                <th>Generes</th>
+                <td>{{ book.generes }}</td>
+            </tr>
+            <tr>
+                <th>Id</th>
+                <td>{{ book.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+      <a href="{{ path('books_index') }}">Home</a>
+
+{% endblock %}

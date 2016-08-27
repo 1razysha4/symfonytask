@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Books list</h1>
+    <span><a href="{{ path('books_new') }}">Create a new entry</a></span>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Releasedate</th>
+                <th>Length</th>
+                <th>Generes</th>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for book in books %}
+            <tr>
+                <td><a href="{{ path('books_show', { 'id': book.id }) }}">{{ book.name }}</a></td>
+                <td>{% if book.releasedate %}{{ book.releasedate|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ book.length }}</td>
+                <td>{{ book.generes }}</td>
+                <td>{{ book.id }}</td>
+                <td><a href="{{ path('books_show', { 'id': book.id }) }}">Detail</a></td>
+            </tr>
+        {% endfor %}
+        <div id="divputinarea">
+            <button>Show more</button>
+        </div>
+        </tbody>
+    </table>
+{% endblock %}
