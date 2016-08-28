@@ -16,9 +16,7 @@
             <th>Releasedate</th>
             <th>Length</th>
             <th>Generes</th>
-            <th>Id</th>
-            <th>Actions</th>
-            <th>readable</th>
+            <th>Readable</th>
         </tr>
         </thead>
         <tbody>
@@ -28,15 +26,13 @@
                 <td>{% if book.releasedate %}{{ book.releasedate|date('Y-m-d') }}{% endif %}</td>
                 <td>{{ book.length }}</td>
                 <td>{{ book.generes }}</td>
-                <td>{{ book.id }}</td>
-                <td>{% if book.generes == 'Drama' or book.generes == 'Police' %}
-                   "Y"
-                   {% else %}
-                   "n"
-                    {% endif %}
-                </td>
-                <td><a href="{{ path('books_show', { 'id': book.id }) }}">Detail</a></td>
-
+                <td>
+                {% if (app.user != "admin" and book.generes == "Tragicomedy") or (app.user != "admin" and book.generes == "Non-fiction")  %}
+                    No access
+                {% else %}
+                    <a href="{{ path('books_show', { 'id': book.id }) }}">Detail</a>
+                {% endif %}
+                 </td>
             </tr>
         {% endfor %}
         <div id="divputinarea">
